@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl0mjbepi7u23"]
+
+[ext_resource type="Script" path="res://screen.gd" id="1_jrfu5"]
+
+[node name="Main" type="Node"]
+
+[node name="screen" type="RichTextLabel" parent="."]
+offset_right = 823.0
+offset_bottom = 486.0
+text = "ddfsgvsgsfgsfgf"
+script = ExtResource("1_jrfu5")
