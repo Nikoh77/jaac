@@ -1,10 +1,10 @@
 extends Node
 
 var client: StreamPeerTCP = StreamPeerTCP.new()
-var host: String = 'smtp.gmail.com'
-var port: int = 25
+var host: String = 'react-bbs.nikoh.it'
+var port: int = 2323
 var _status: int
-const RECONNECT_TIMEOUT: float = 3.0
+var RECONNECT_TIMEOUT: float = 3.0
 
 signal connected
 signal data
@@ -21,6 +21,7 @@ func _ready():
 	connect_to_host(host, port)
 	
 func _process(delta):
+	client.poll()
 	var new_status: int = client.get_status()
 	if new_status != _status:
 		_status = new_status
@@ -75,9 +76,10 @@ func _handle_client_connected() -> void:
 	print("Client connected to server.")
 
 func _handle_client_data(data: PackedByteArray) -> void:
+	get_node('/root/Main/screen').add_text(data.get_string_from_utf8())
 	print("Client data: ", data.get_string_from_utf8())
 	var message: PackedByteArray = [97, 99, 107] # Bytes for "ack" in ASCII
-	client.send(message)
+	send(message)
 
 func _handle_client_disconnected() -> void:
 	print("Client disconnected from server.")
@@ -86,12 +88,7 @@ func _handle_client_disconnected() -> void:
 func _handle_client_error() -> void:
 	print("Client error.")
 	_connect_after_timeout(RECONNECT_TIMEOUT) # Try to reconnect after 3 seconds
-#extends RichTextLabel
-#
-#const HOST = "162.243.54.214"       # gameserver IP address
-#const PORT = 23                     # gameserver port
-#var client = StreamPeerTCP.new()
-#
+
 #func _ready():
 #    set_scroll_follow(true)
 #    set_process(true)
@@ -110,7 +107,3 @@ func _handle_client_error() -> void:
 #        else:
 #            client.put_utf8_string(str(keySymbol).to_lower())
 #
-#func _process(delta):
-#    var bytes = client.get_available_bytes()
-#    if bytes > 0:
-#            self.add_text(str(client.get_string(bytes)))
