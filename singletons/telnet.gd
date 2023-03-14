@@ -1,8 +1,8 @@
 extends Node
 
 var client: StreamPeerTCP = StreamPeerTCP.new()
-var host: String = 'react-bbs.nikoh.it'
-var port: int = 2323
+var host: String = 'smtp.google.com'
+var port: int = 25
 var _status: int
 var RECONNECT_TIMEOUT: float = 3.0
 

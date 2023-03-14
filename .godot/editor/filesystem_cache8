@@ -1,9 +1,9 @@
 2a60927148abd1d33b818b535e306557
-::res://::1678824899
+::res://::1678837212
 icon.svg::CompressedTexture2D::8216112310326526867::1678820553::1678820553::1::::<><>::
 LICENSE.md::TextFile::-1::1678820553::0::1::::<><>::
-main.tscn::PackedScene::5597272826710466018::1678820553::0::1::::<><>::res://screen.gd
+main.tscn::PackedScene::5597272826710466018::1678835898::0::1::::<><>::res://screen.gd
 README.md::TextFile::-1::1678820553::0::1::::<><>::
-screen.gd::GDScript::-1::1678820553::0::1::::<>RichTextLabel<>::
-::res://singletons/::1678820553
-telnet.gd::GDScript::-1::1678820553::0::1::::<>Node<>::
+screen.gd::GDScript::-1::1678834621::0::1::::<>RichTextLabel<>::
+::res://singletons/::1678832248
+telnet.gd::GDScript::-1::1678832248::0::1::::<>Node<>::
