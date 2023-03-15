@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 Telnet="*res://singletons/telnet.gd"
+Settings="*res://singletons/settings.gd"

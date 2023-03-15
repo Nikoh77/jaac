@@ -1,10 +1,10 @@
 extends Node
 
 var client: StreamPeerTCP = StreamPeerTCP.new()
-var host: String = 'smtp.google.com'
-var port: int = 25
+var hostINI: String = 'react-bbs.nikoh.it'
+var portINI: int = 2323
 var _status: int
-var RECONNECT_TIMEOUT: float = 3.0
+var RECONNECT_TIMEOUTINI: float = 3.0
 
 signal connected
 signal data
@@ -18,7 +18,7 @@ func _ready():
 	self.disconnected.connect(self._handle_client_disconnected)
 	self.error.connect(self._handle_client_error)
 	self.data.connect(self._handle_client_data)
-	connect_to_host(host, port)
+	connect_to_host(hostINI, portINI)
 	
 func _process(delta):
 	client.poll()
@@ -49,7 +49,7 @@ func _process(delta):
 				emit_signal("error")
 			else:
 				emit_signal("data", data[1])
-		
+	
 func connect_to_host(host: String, port: int) -> void:
 	print("Connecting to %s:%d" % [host, port])
 	# Reset status so we can tell if it changes to error again.
@@ -70,7 +70,7 @@ func send(data: PackedByteArray) -> bool:
 
 func _connect_after_timeout(timeout: float) -> void:
 	await get_tree().create_timer(timeout).timeout # Delay for timeout
-	connect_to_host(host, port)
+	connect_to_host(hostINI, portINI)
 
 func _handle_client_connected() -> void:
 	print("Client connected to server.")
@@ -83,27 +83,11 @@ func _handle_client_data(data: PackedByteArray) -> void:
 
 func _handle_client_disconnected() -> void:
 	print("Client disconnected from server.")
-	_connect_after_timeout(RECONNECT_TIMEOUT) # Try to reconnect after 3 seconds
+	if RECONNECT_TIMEOUTINI:
+		_connect_after_timeout(RECONNECT_TIMEOUTINI) # Try to reconnect after 3 seconds
 
 func _handle_client_error() -> void:
 	print("Client error.")
-	_connect_after_timeout(RECONNECT_TIMEOUT) # Try to reconnect after 3 seconds
+	if RECONNECT_TIMEOUTINI:
+		_connect_after_timeout(RECONNECT_TIMEOUTINI) # Try to reconnect after 3 seconds
 
-#func _ready():
-#    set_scroll_follow(true)
-#    set_process(true)
-#    set_process_input(true)
-#    client.connect(HOST,PORT)
-#
-#func _input(event):
-#    if (event.type == InputEvent.KEY && !event.is_echo() && event.is_pressed()):
-#        var keySymbol = RawArray([event.scancode]).get_string_from_ascii()
-#        if event.scancode == 16777222 || event.scancode == 16777221:
-#            client.put_utf8_string(str("\r"))
-#        elif event.scancode > 16777349 && event.scancode < 16777360:
-#            client.put_utf8_string(str(event.scancode - 16777350))
-#        elif (event.shift):
-#            client.put_utf8_string(str(keySymbol))
-#        else:
-#            client.put_utf8_string(str(keySymbol).to_lower())
-#
