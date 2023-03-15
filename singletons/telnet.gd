@@ -12,8 +12,8 @@ signal disconnected
 signal error
 
 func _ready():
+	await Settings.settingsLoaded
 	_status = client.get_status()
-	prints('status:', _status)
 	self.connected.connect(self._handle_client_connected)
 	self.disconnected.connect(self._handle_client_disconnected)
 	self.error.connect(self._handle_client_error)
@@ -78,8 +78,8 @@ func _handle_client_connected() -> void:
 func _handle_client_data(data: PackedByteArray) -> void:
 	get_node('/root/Main/screen').add_text(data.get_string_from_utf8())
 	print("Client data: ", data.get_string_from_utf8())
-	var message: PackedByteArray = [97, 99, 107] # Bytes for "ack" in ASCII
-	send(message)
+#	var message: PackedByteArray = [97, 99, 107] # Bytes for "ack" in ASCII
+#	send(message)
 
 func _handle_client_disconnected() -> void:
 	print("Client disconnected from server.")
