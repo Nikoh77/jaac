@@ -1,10 +1,13 @@
 extends RichTextLabel
 
 func _ready():
-	set_scroll_follow(true)
-#    set_process(true)
-#    set_process_input(true)
-
+#	var font: Font = self.get_theme_default_font()
+#	var sizez = self.get_theme_default_font_size()
+#	prints(font, sizez)
+#	set_scroll_follow(true)
+#   set_process(true)
+#   set_process_input(true)
+	pass
 	
 func _input(event):
 	if event is InputEventKey and !event.is_echo() and event.is_pressed():
