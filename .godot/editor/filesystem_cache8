@@ -1,0 +1,14 @@
+2a60927148abd1d33b818b535e306557
+::res://::1678977391
+icon.svg::CompressedTexture2D::8216112310326526867::1678820553::1678820553::1::::<><>::
+LICENSE.md::TextFile::-1::1678820553::0::1::::<><>::
+main.tscn::PackedScene::5597272826710466018::1678977003::0::1::::<><>::res://screen.gd
+README.md::TextFile::-1::1678820553::0::1::::<><>::
+screen.gd::GDScript::-1::1678977003::0::1::::<>RichTextLabel<>::
+settings.ini::TextFile::-1::1678924229::0::1::::<><>::
+::res://assets/::1678886942
+::res://assets/images/::1678886978
+tw2002-lord.png::CompressedTexture2D::5471123614922218575::1678886942::1678886978::1::::<><>::
+::res://singletons/::1678893960
+settings.gd::GDScript::-1::1678886942::0::1::::<>Node<>::
+telnet.gd::GDScript::-1::1678977003::0::1::::<>Node<>::
