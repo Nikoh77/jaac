@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl0mjbepi7u23"]
+[gd_scene load_steps=3 format=3 uid="uid://cl0mjbepi7u23"]
 
 [ext_resource type="Script" path="res://screen.gd" id="1_jrfu5"]
+[ext_resource type="Script" path="res://textins.gd" id="2_44idj"]
 
 [node name="Main" type="Node"]
 
@@ -31,3 +32,11 @@ focus_mode = 2
 scroll_following = true
 selection_enabled = true
 script = ExtResource("1_jrfu5")
+
+[node name="textins" type="LineEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+script = ExtResource("2_44idj")
