@@ -42,7 +42,8 @@ func _process(delta):
 		var available_bytes: int = client.get_available_bytes()
 		if available_bytes > 0:
 			print("available bytes: ", available_bytes)
-			var data: Array = client.get_partial_data(available_bytes)
+			var data: Array = client.get_data(available_bytes)
+#			var data: Array = client.get_partial_data(available_bytes)
 			# Check for read error.
 			if data[0] != OK:
 				print("Error getting data from stream: ", data[0])
@@ -76,8 +77,11 @@ func _handle_client_connected() -> void:
 	print("Client connected to server.")
 
 func _handle_client_data(data: PackedByteArray) -> void:
+	var escape = data.find(12)
+	if escape != -1:
+		prints('escape sequence at index', escape)
 	get_node('/root/Main/Control/Screen').add_text(data.get_string_from_utf8())
-	print("Client data: ", data)
+	prints("Client data:", data)
 #	var message: PackedByteArray = [97, 99, 107] # Bytes for "ack" in ASCII
 #	send(message)
 
