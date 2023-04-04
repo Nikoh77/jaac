@@ -1,5 +1,5 @@
 # jaac
-Is a terminal emulator for BBSes with high capability to decode ANSI sequences.<br>
+Made with GODOT 4 & GDScript, JAAC is a terminal emulator for BBSes with high capability to decode ANSI sequences.<br>
 ## Features
 
 * Cross platform: Linux, Windows, Mac OS, Android, IOS and consoles
